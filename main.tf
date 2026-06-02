@@ -19,5 +19,17 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = "myTfResourceGroup"
   location = "westus2"
+  tags = { Environment = "Terrform getting Started"
+  Team="DevOps" }
 
+}
+
+#Create aVirtual network
+
+resource "azurerm_virtual_network" "vnet" {
+    name    = "myTFVnet"
+    address_space  = ["10.0.0.0/16"]
+    location    = "westus2"
+    resource_group_name = azurerm_resource_group.rg.name 
+  
 }
